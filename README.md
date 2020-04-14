@@ -1,0 +1,1 @@
+# Placeholder package for an upcoming wrapper around https://modpacksch.docs.apiary.io/
