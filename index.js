@@ -4,7 +4,7 @@ const SITE = "https://api.modpacks.ch/";
 
 async function get(endpoint, VERSION = "public")
 { 
-	const response = await fetch(SITE + VERSION + endpoint);
+	const response = await fetch(SITE + VERSION + endpoint, { method: 'GET', retry: 5 });
 	return await response.json();
 }
 
@@ -97,52 +97,46 @@ async function packManifest(packID)
     return get('/modpack/' + packID);
 }
 
-async function versionManifest(packID, parent)
+async function versionManifest(packID)
 {
     checkForNaN(packID);
-    checkForNaN(parent);
 
-    return get(`/modpack/${packID}/${parent}`);
+    return get(`/modpack/${packID}/${packID}`);
 }
 
-async function versionChangelog(packID, parent)
+async function versionChangelog(packID)
 {
     checkForNaN(packID);
-    checkForNaN(parent);
 
-    return get(`/modpack/${packID}/${parent}/changelog`);
+    return get(`/modpack/${packID}/${packID}/changelog`);
 }
 
-function linuxServerDownloadLink(packID, parent)
+function linuxServerDownloadLink(packID)
 {
     checkForNaN(packID);
-    checkForNaN(parent);
-
-    return `${SITE}public/modpack/${packID}/${parent}/server/linux`;
+    
+    return `${SITE}public/modpack/${packID}/${packID}/server/linux`;
 }
 
-function windowsServerDownloadLink(packID, parent)
+function windowsServerDownloadLink(packID)
 {
     checkForNaN(packID);
-    checkForNaN(parent);
 
-    return `${SITE}public/modpack/${packID}/${parent}/server/windows`;
+    return `${SITE}public/modpack/${packID}/${packID}/server/windows`;
 }
 
-async function incrementPlayCount(packID, parent)
+async function incrementPlayCount(packID)
 {
     checkForNaN(packID);
-    checkForNaN(parent);
 
-    return get(`/modpack/${packID}/${parent}/play`);
+    return get(`/modpack/${packID}/${packID}/play`);
 }
 
-async function incrementInstallCount(packID, parent)
+async function incrementInstallCount(packID)
 {
     checkForNaN(packID);
-    checkForNaN(parent);
 
-    return get(`/modpack/${packID}/${parent}/install`);
+    return get(`/modpack/${packID}/${packID}/install`);
 }
 
 async function listAssignedPrivatePacks(limit, userKey)

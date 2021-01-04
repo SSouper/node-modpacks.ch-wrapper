@@ -14,8 +14,8 @@ function equals(test1, test2, desc)
 
 (async function() 
 {
-    equals(modpacksch.windowsServerDownloadLink(9, 9), 'https://api.modpacks.ch/public/modpack/9/9/server/windows', 'Should return a valid windows download link');
-    equals(modpacksch.linuxServerDownloadLink(9, 9), 'https://api.modpacks.ch/public/modpack/9/9/server/linux', 'Should return a valid linux download link');
-    equals((await modpacksch.packManifest(9)).synopsis, 'FTB Presents HermitPack', 'Synopsis should match for packID 9');
-    equals((await modpacksch.versionManifest(9, 9)).files[0].sha1, '26650f97bc7e024af2d80984ef36b3f1d6339f61', 'First file in packID 9 should match sha1');
+    equals(modpacksch.windowsServerDownloadLink(9), 'https://api.modpacks.ch/public/modpack/9/9/server/windows', 'Should return a valid windows download link');
+    equals(modpacksch.linuxServerDownloadLink(9), 'https://api.modpacks.ch/public/modpack/9/9/server/linux', 'Should return a valid linux download link');
+    equals((await modpacksch.packManifest(9)).synopsis, 'Play along with the Hermitcraft members on their various YouTube and Twitch series', 'Synopsis should match for packID 9');
+    equals((await modpacksch.versionManifest(9)).files[0].sha1, '26650f97bc7e024af2d80984ef36b3f1d6339f61', 'First file in packID 9 should match sha1');
 }());

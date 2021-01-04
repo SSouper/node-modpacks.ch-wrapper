@@ -7,7 +7,7 @@
 const modpacksch = require('modpacks.ch');
 
 let searchResult = await modpacksch.searchPack('HermitPack', 5);
-let versionManifest = await modpacksch.versionManifest(searchResult.packs[0], searchResult.packs[0]);
+let versionManifest = await modpacksch.versionManifest(searchResult.packs[0]);
 
 console.log(versionManifest.files);
 ```
